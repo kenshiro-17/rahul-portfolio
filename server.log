@@ -1,0 +1,26 @@
+
+> portfolio@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.19:3000
+- Experiments (use with caution):
+  · optimizePackageImports
+
+✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+Failed to benchmark file I/O: The system cannot find the path specified. (os error 3)
+✓ Ready in 7.7s
+○ Compiling / ...
+ HEAD / 200 in 4.8s (compile: 4.8s, render: 66ms)
+ GET / 200 in 40ms (compile: 5ms, render: 34ms)
+ GET /icon-192.png 404 in 344ms (compile: 312ms, render: 32ms)
+ GET / 200 in 25ms (compile: 4ms, render: 21ms)
+ GET /icon-192.png 404 in 29ms (compile: 3ms, render: 26ms)
+ GET / 200 in 29ms (compile: 3ms, render: 27ms)
+ GET /icon-192.png 404 in 23ms (compile: 3ms, render: 20ms)

@@ -1,0 +1,11 @@
+# Robots.txt for Rahul Raj Portfolio
+# https://rahulraj.dev
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://rahulraj.dev/sitemap.xml
+
+# Disallow admin/api routes
+Disallow: /api/
