@@ -45,15 +45,6 @@ function FloatingObject({
   );
 }
 
-function toGithubPreviewUrl(repoUrl: string) {
-  if (!repoUrl || !repoUrl.includes("github.com")) return "";
-  const match = repoUrl.match(/github\.com\/([^/]+)\/([^/?#]+)/);
-  if (!match) return "";
-  const owner = match[1];
-  const repo = match[2].replace(/\.git$/, "");
-  return `https://opengraph.githubassets.com/1/${owner}/${repo}`;
-}
-
 export function FramerInspiredPortfolio() {
   const heroPortraitSrc = "/images/rahul-hero.jpg";
   const featuredProjects = PROJECTS.slice(0, 5);
@@ -269,9 +260,9 @@ export function FramerInspiredPortfolio() {
           </div>
         </section>
 
-        <section id="projects" className="mt-14">
+        <section id="projects" className="mt-16">
           <div className="mb-5 flex items-center justify-between">
-            <h2 className="text-2xl font-semibold md:text-3xl">Projects</h2>
+            <h2 className="text-2xl font-semibold md:text-3xl">Selected Work</h2>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
@@ -281,72 +272,61 @@ export function FramerInspiredPortfolio() {
               GitHub
             </a>
           </div>
-          <div className="grid gap-4">
+          <div className="space-y-4">
             {featuredProjects.map((project, index) => (
               <motion.article
                 key={project.id}
-                className={`${cardBase} overflow-hidden`}
+                className={`${cardBase} p-6 md:p-8`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: index * 0.06 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="grid gap-0 md:grid-cols-[1.2fr_1fr]">
-                  <div className="p-6 md:p-7">
-                    <p className="text-xs uppercase tracking-wide text-black/50">{project.subtitle}</p>
-                    <h3 className="mt-2 text-2xl font-semibold md:text-3xl">{project.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-black/72 md:text-base">
+                <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+                  <div className="md:max-w-[72%]">
+                    <p className="text-xs uppercase tracking-[0.18em] text-black/45">
+                      {String(index + 1).padStart(2, "0")} · {project.subtitle}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-semibold leading-tight md:text-4xl">
+                      {project.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-black/72 md:text-base">
                       {project.description}
                     </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {project.tech.slice(0, 4).map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full border border-black/10 bg-[#f8f4ee] px-2.5 py-1 text-[11px]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {project.metrics.slice(0, 3).map((metric) => (
-                        <span key={metric} className="text-xs text-black/55">
-                          • {metric}
-                        </span>
-                      ))}
-                    </div>
+                  </div>
+                  <div className="md:min-w-[170px] md:text-right">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-black/45">Case Study</p>
                     {project.githubUrl ? (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-5 inline-block text-xs font-medium underline decoration-black/30 underline-offset-4"
+                        className="mt-2 inline-block rounded-full border border-black/15 px-3 py-1.5 text-xs font-medium"
                       >
-                        Open repository
+                        Open Repository
                       </a>
                     ) : (
-                      <p className="mt-5 text-xs text-black/45">Private project</p>
+                      <p className="mt-2 text-xs text-black/45">Private project</p>
                     )}
                   </div>
-                  <div className="border-l border-black/8 bg-[#f3ede2] p-6">
-                    <div className="flex h-full min-h-[190px] items-center justify-center rounded-2xl border border-black/10 bg-gradient-to-br from-white to-[#ece3d4] p-4 text-center">
-                      {project.githubUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={toGithubPreviewUrl(project.githubUrl)}
-                          alt={`${project.title} repository preview`}
-                          className="h-full w-full rounded-xl object-cover"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="text-sm text-black/55">
-                          <p>Private project</p>
-                          <p className="mt-1 text-xs">No public repository preview</p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                </div>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.tech.slice(0, 5).map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-black/10 bg-[#f8f4ee] px-2.5 py-1 text-[11px]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2 border-t border-black/8 pt-4">
+                  {project.metrics.slice(0, 3).map((metric) => (
+                    <span key={metric} className="text-xs text-black/55">
+                      • {metric}
+                    </span>
+                  ))}
                 </div>
               </motion.article>
             ))}
