@@ -54,12 +54,12 @@ export function FramerInspiredPortfolio() {
   const workItems = PROJECTS.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-sky-100">
-      <div className="pointer-events-none fixed inset-0 opacity-60">
+    <div className="min-h-screen bg-[#EEF2F7] text-slate-900 selection:bg-sky-100">
+      <div className="pointer-events-none fixed inset-0 opacity-55">
         <div className="absolute inset-0 [background-image:radial-gradient(#0f172a15_1px,transparent_1px)] [background-size:22px_22px]" />
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-[#EEF2F7]/88 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
           <a href="#top" className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
