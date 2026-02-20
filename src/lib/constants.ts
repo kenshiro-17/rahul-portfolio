@@ -57,7 +57,7 @@ export const WORK_EXPERIENCE = [
     title: "Unity Developer Intern",
     company: "PaceLab",
     location: "Hyderabad, India",
-    period: "Apr 2019 - Jul 2019",
+    period: "04/2019 - 07/2019",
     description:
       "Prototyped a VR racing simulator with real-time physics and modular control logic, and integrated telemetry-style logging for repeatable diagnostics and result comparison.",
     highlights: ["VR simulation", "Telemetry logging", "Real-time physics"],
