@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1022"/>
+      <stop offset="1" stop-color="#1A3D73"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(310 220) rotate(39) scale(430 300)">
+      <stop stop-color="#65E7FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#65E7FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg1)"/>
+  <rect x="120" y="96" width="1360" height="708" rx="32" fill="#0D1732" stroke="#3A5C9D" stroke-opacity="0.45"/>
+  <rect x="180" y="170" width="560" height="22" rx="11" fill="#6CE5FF" fill-opacity="0.4"/>
+  <rect x="180" y="220" width="880" height="16" rx="8" fill="#93A7D8" fill-opacity="0.35"/>
+  <rect x="180" y="252" width="780" height="16" rx="8" fill="#93A7D8" fill-opacity="0.3"/>
+  <rect x="180" y="330" width="610" height="300" rx="20" fill="#101E41" stroke="#4C72B8" stroke-opacity="0.35"/>
+  <circle cx="1180" cy="320" r="170" fill="url(#g1)"/>
+  <rect x="1020" y="430" width="380" height="56" rx="28" fill="#2D62C7"/>
+  <rect x="1020" y="510" width="280" height="16" rx="8" fill="#8FA4D2" fill-opacity="0.55"/>
+  <rect x="1020" y="540" width="320" height="16" rx="8" fill="#8FA4D2" fill-opacity="0.45"/>
+  <rect x="1020" y="570" width="240" height="16" rx="8" fill="#8FA4D2" fill-opacity="0.35"/>
+  <text x="180" y="760" fill="#D8E6FF" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700">AI Matchmaking Platform</text>
+  <text x="180" y="804" fill="#96B0DF" font-family="Inter,Arial,sans-serif" font-size="24">Rule + LLM Ranking • Bulk Ingestion • Secure Access</text>
+</svg>

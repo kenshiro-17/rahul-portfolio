@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1F21"/>
+      <stop offset="1" stop-color="#145D61"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <rect x="120" y="96" width="1360" height="708" rx="32" fill="#0E2A2D" stroke="#3BB8A8" stroke-opacity="0.45"/>
+  <rect x="190" y="184" width="1218" height="420" rx="22" fill="#0F373A" stroke="#4ED3C0" stroke-opacity="0.35"/>
+  <rect x="240" y="250" width="370" height="286" rx="16" fill="#13484B"/>
+  <rect x="652" y="250" width="320" height="20" rx="10" fill="#8DEBD8" fill-opacity="0.4"/>
+  <rect x="652" y="286" width="530" height="14" rx="7" fill="#8DEBD8" fill-opacity="0.3"/>
+  <rect x="652" y="315" width="470" height="14" rx="7" fill="#8DEBD8" fill-opacity="0.25"/>
+  <rect x="652" y="365" width="280" height="46" rx="23" fill="#1AAE97"/>
+  <rect x="652" y="431" width="200" height="14" rx="7" fill="#8DEBD8" fill-opacity="0.35"/>
+  <rect x="652" y="459" width="240" height="14" rx="7" fill="#8DEBD8" fill-opacity="0.26"/>
+  <text x="180" y="760" fill="#DBFFF8" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700">AI Document Assistant</text>
+  <text x="180" y="804" fill="#9DE0D3" font-family="Inter,Arial,sans-serif" font-size="24">Chunking • Embeddings • Semantic Retrieval • REST APIs</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13131A"/>
+      <stop offset="1" stop-color="#6A2B58"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg6)"/>
+  <rect x="120" y="96" width="1360" height="708" rx="32" fill="#181824" stroke="#D062B6" stroke-opacity="0.45"/>
+  <path d="M210 560C320 410 430 350 540 350C650 350 760 430 870 520C980 610 1090 650 1200 610" stroke="#F398DC" stroke-opacity="0.6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M210 610C320 460 430 400 540 400C650 400 760 470 870 560C980 650 1090 690 1200 650" stroke="#F398DC" stroke-opacity="0.4" stroke-width="6" stroke-linecap="round"/>
+  <rect x="990" y="220" width="320" height="220" rx="20" fill="#24172A" stroke="#E37CCB" stroke-opacity="0.35"/>
+  <rect x="1030" y="270" width="240" height="30" rx="15" fill="#C94DA6"/>
+  <rect x="1030" y="320" width="200" height="12" rx="6" fill="#F3B4E4" fill-opacity="0.45"/>
+  <rect x="1030" y="344" width="230" height="12" rx="6" fill="#F3B4E4" fill-opacity="0.34"/>
+  <rect x="1030" y="368" width="170" height="12" rx="6" fill="#F3B4E4" fill-opacity="0.24"/>
+  <text x="180" y="760" fill="#FFE7F8" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700">Audio Instrument Classification</text>
+  <text x="180" y="804" fill="#EEB8DF" font-family="Inter,Arial,sans-serif" font-size="24">PyTorch CNN • 20 Classes • 87% Accuracy</text>
+</svg>

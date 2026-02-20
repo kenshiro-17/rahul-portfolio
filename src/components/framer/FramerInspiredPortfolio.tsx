@@ -20,30 +20,29 @@ const stats = [
 const cardBase =
   "rounded-[24px] border border-black/10 bg-white shadow-[0_8px_22px_rgba(17,24,39,0.06)]";
 
-function ProjectCover({ index }: { index: number }) {
-  const palettes = [
-    ["#131722", "#2f5ef7", "#8de0ff"],
-    ["#1d142a", "#7a5cff", "#d6b0ff"],
-    ["#0f2922", "#0ea888", "#83e6c2"],
-    ["#2b1617", "#ff6a5e", "#ffc3ad"],
-    ["#1e2434", "#4f7cff", "#a9c3ff"],
-    ["#22201a", "#7a6f49", "#e7d7aa"],
+function ProjectCover({ index, subtitle }: { index: number; subtitle: string }) {
+  const sources = [
+    "/images/project-covers/cover-1.svg",
+    "/images/project-covers/cover-2.svg",
+    "/images/project-covers/cover-3.svg",
+    "/images/project-covers/cover-4.svg",
+    "/images/project-covers/cover-5.svg",
+    "/images/project-covers/cover-6.svg",
   ] as const;
-
-  const p = palettes[index % palettes.length];
+  const src = sources[index % sources.length];
 
   return (
-    <div
-      className="relative h-[220px] overflow-hidden"
-      style={{
-        background: `radial-gradient(circle at 20% 20%, ${p[2]}55 0%, transparent 35%),
-                     radial-gradient(circle at 80% 75%, ${p[1]}66 0%, transparent 38%),
-                     linear-gradient(135deg, ${p[0]} 0%, ${p[1]} 100%)`,
-      }}
-    >
-      <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full border border-white/20 bg-white/10" />
-      <div className="absolute bottom-5 left-5 h-16 w-16 rounded-2xl border border-white/20 bg-black/25 backdrop-blur-sm" />
-      <div className="absolute right-8 top-10 h-24 w-24 rotate-12 rounded-[28px] border border-white/15 bg-white/10 backdrop-blur-sm" />
+    <div className="relative h-[220px] overflow-hidden">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={`${subtitle} visual cover`}
+        className="h-full w-full object-cover"
+        loading="lazy"
+      />
+      <div className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-white/35 bg-black/45 px-3 py-1 text-xs text-white backdrop-blur">
+        {subtitle}
+      </div>
     </div>
   );
 }
@@ -165,7 +164,7 @@ export function FramerInspiredPortfolio() {
                 transition={{ delay: index * 0.05 }}
               >
                 <div className="overflow-hidden border-b border-black/10 bg-[#efe8db]">
-                  <ProjectCover index={index} />
+                  <ProjectCover index={index} subtitle={project.subtitle} />
                 </div>
                 <div className="p-5">
                   <h3 className="text-xl font-semibold">{project.title}</h3>

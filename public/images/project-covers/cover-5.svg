@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#181126"/>
+      <stop offset="1" stop-color="#2F3573"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg5)"/>
+  <rect x="120" y="96" width="1360" height="708" rx="32" fill="#1A1731" stroke="#6B7BEB" stroke-opacity="0.45"/>
+  <circle cx="370" cy="300" r="120" fill="#6B7BEB" fill-opacity="0.25"/>
+  <circle cx="560" cy="300" r="120" fill="#6B7BEB" fill-opacity="0.25"/>
+  <circle cx="750" cy="300" r="120" fill="#6B7BEB" fill-opacity="0.25"/>
+  <rect x="910" y="210" width="420" height="300" rx="20" fill="#221E3F" stroke="#8F9BFF" stroke-opacity="0.35"/>
+  <rect x="960" y="280" width="300" height="46" rx="23" fill="#4A61FF"/>
+  <rect x="960" y="356" width="240" height="14" rx="7" fill="#A8B1FF" fill-opacity="0.45"/>
+  <rect x="960" y="384" width="280" height="14" rx="7" fill="#A8B1FF" fill-opacity="0.35"/>
+  <rect x="960" y="412" width="200" height="14" rx="7" fill="#A8B1FF" fill-opacity="0.25"/>
+  <text x="180" y="760" fill="#E6EAFF" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700">Discord Music Bot</text>
+  <text x="180" y="804" fill="#BAC3FF" font-family="Inter,Arial,sans-serif" font-size="24">Event-Driven • Containerized • 99.9% Uptime</text>
+</svg>
