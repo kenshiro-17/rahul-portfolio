@@ -18,8 +18,7 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const cardBase =
-  "rounded-[28px] border border-black/10 bg-white/80 backdrop-blur-sm shadow-[0_14px_35px_rgba(0,0,0,0.08)]";
+const cardBase = "rounded-[26px] border border-black/10 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.07)]";
 
 function FloatingObject({
   className,
@@ -46,18 +45,34 @@ function FloatingObject({
   );
 }
 
+function toGithubPreviewUrl(repoUrl: string) {
+  if (!repoUrl || !repoUrl.includes("github.com")) return "";
+  const match = repoUrl.match(/github\.com\/([^/]+)\/([^/?#]+)/);
+  if (!match) return "";
+  const owner = match[1];
+  const repo = match[2].replace(/\.git$/, "");
+  return `https://opengraph.githubassets.com/1/${owner}/${repo}`;
+}
+
 export function FramerInspiredPortfolio() {
-  const featuredProjects = PROJECTS.slice(0, 6);
+  const featuredProjects = PROJECTS.slice(0, 5);
+  const sideProjects = PROJECTS.slice(5, 8);
   const topSkills = [...SKILLS.primary, ...SKILLS.secondary].slice(0, 10);
+  const stats = [
+    { label: "Records Processed Daily", value: "2M+" },
+    { label: "Concurrent Users Supported", value: "100+" },
+    { label: "Production Uptime", value: "99.9%" },
+    { label: "ML Classification Accuracy", value: "87%" },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#efece5] text-[#1e1e1e] selection:bg-[#d8cdbf]">
-      <div className="pointer-events-none fixed inset-0 opacity-70">
-        <div className="absolute inset-0 [background-image:radial-gradient(#9b9b9b22_1px,transparent_1px)] [background-size:26px_26px]" />
+    <div className="min-h-screen bg-[#ece6db] text-[#141414] selection:bg-[#d7cfbf]">
+      <div className="pointer-events-none fixed inset-0 opacity-80">
+        <div className="absolute inset-0 [background-image:radial-gradient(#8f8f8f1f_1px,transparent_1px)] [background-size:24px_24px]" />
       </div>
 
       <header className="sticky top-0 z-50 px-4 pt-4">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-3xl border border-black/10 bg-[#f5f1ea]/90 px-4 py-3 backdrop-blur">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between rounded-3xl border border-black/10 bg-[#f7f2e8]/95 px-4 py-3 backdrop-blur">
           <a href="#top" className="text-sm font-semibold tracking-wide">
             RAHUL RAJ
           </a>
@@ -74,7 +89,7 @@ export function FramerInspiredPortfolio() {
           </div>
           <a
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="rounded-full bg-[#222] px-4 py-2 text-xs font-semibold text-white"
+            className="rounded-full bg-[#1a1a1a] px-4 py-2 text-xs font-semibold text-white"
           >
             Let&apos;s talk
           </a>
@@ -82,26 +97,25 @@ export function FramerInspiredPortfolio() {
       </header>
 
       <main id="top" className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-10">
-        <section className="relative overflow-hidden rounded-[36px] border border-black/10 bg-[#f6f2eb] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.08)] md:p-10">
-          <div className="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-center">
+        <section className="relative overflow-hidden rounded-[34px] border border-black/10 bg-[#f8f4ec] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.08)] md:p-10">
+          <div className="grid gap-8 md:grid-cols-[1.15fr_1fr] md:items-center">
             <div>
-              <p className="mb-3 inline-block rounded-full border border-black/10 bg-white px-3 py-1 text-xs tracking-wide">
+              <p className="mb-4 inline-block rounded-full border border-black/10 bg-white px-3 py-1 text-xs tracking-wide">
                 Software Engineer + AI Specialist
               </p>
-              <h1 className="max-w-xl text-4xl font-semibold leading-tight md:text-6xl">
-                Designing thoughtful AI products that people actually enjoy
-                using.
+              <h1 className="max-w-xl text-4xl font-semibold leading-[1.02] md:text-[72px]">
+                AI products with depth, speed, and real production quality.
               </h1>
-              <p className="mt-5 max-w-lg text-sm text-black/70 md:text-base">
+              <p className="mt-5 max-w-lg text-sm text-black/70 md:text-[17px]">
                 I&apos;m {PERSONAL_INFO.fullName}, currently based in{" "}
-                {PERSONAL_INFO.location}. I build full-stack systems, AI
-                tooling, and product experiences with a strong focus on
-                reliability and visual clarity.
+                {PERSONAL_INFO.location}. I design and ship LLM systems, RAG
+                products, and backend-heavy applications from architecture to
+                deployment.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
                   href="#projects"
-                  className="rounded-full bg-[#111] px-5 py-2.5 text-sm font-medium text-white"
+                  className="rounded-full bg-[#111] px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
                 >
                   View Projects
                 </a>
@@ -109,57 +123,70 @@ export function FramerInspiredPortfolio() {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-black/15 bg-white px-5 py-2.5 text-sm font-medium"
+                  className="rounded-full border border-black/15 bg-white px-5 py-2.5 text-sm font-medium transition-transform hover:-translate-y-0.5"
                 >
                   LinkedIn
                 </a>
               </div>
             </div>
 
-            <div className="relative min-h-[300px]">
+            <div className="relative min-h-[360px]">
               <FloatingObject
                 delay={0.15}
-                className={`absolute left-2 top-2 w-[72%] p-4 ${cardBase}`}
+                className={`absolute left-0 top-0 w-[82%] p-5 ${cardBase}`}
               >
-                <p className="text-xs uppercase tracking-wide text-black/45">
-                  Current Focus
+                <p className="text-xs uppercase tracking-wide text-black/50">Current Focus</p>
+                <p className="mt-2 text-base font-medium">
+                  LLM apps, retrieval systems, and secure AI orchestration.
                 </p>
-                <p className="mt-2 text-sm font-medium">
-                  LLM apps, retrieval systems, and human-first interface design.
-                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {["RAG", "Embeddings", "FastAPI", "Playwright"].map((tag) => (
+                    <span key={tag} className="rounded-full border border-black/10 bg-[#f8f4ec] px-2 py-1 text-[11px]">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </FloatingObject>
 
               <FloatingObject
                 delay={0.25}
-                className={`absolute right-0 top-20 w-[68%] p-4 ${cardBase}`}
+                className={`absolute right-0 top-24 w-[70%] p-5 ${cardBase}`}
               >
-                <p className="text-xs uppercase tracking-wide text-black/45">
-                  Location
-                </p>
-                <p className="mt-2 text-sm font-medium">
-                  {PERSONAL_INFO.location}
-                </p>
+                <p className="text-xs uppercase tracking-wide text-black/50">Contact Window</p>
+                <a href={`mailto:${PERSONAL_INFO.email}`} className="mt-2 block text-sm font-medium underline decoration-black/30 underline-offset-4">
+                  {PERSONAL_INFO.email}
+                </a>
+                <p className="mt-1 text-xs text-black/55">{PERSONAL_INFO.location}</p>
               </FloatingObject>
 
               <FloatingObject
                 delay={0.35}
-                className={`absolute bottom-2 left-8 w-[74%] p-4 ${cardBase}`}
+                className={`absolute bottom-0 left-8 w-[74%] p-5 ${cardBase}`}
               >
-                <p className="text-xs uppercase tracking-wide text-black/45">
-                  Contact
-                </p>
-                <a
-                  href={`mailto:${PERSONAL_INFO.email}`}
-                  className="mt-2 block text-sm font-medium underline decoration-black/25 underline-offset-4"
-                >
-                  {PERSONAL_INFO.email}
-                </a>
+                <p className="text-xs uppercase tracking-wide text-black/50">Core Identity</p>
+                <p className="mt-2 text-sm font-medium">{PERSONAL_INFO.title}</p>
+                <p className="mt-2 text-xs text-black/60">{PERSONAL_INFO.currentRole}</p>
               </FloatingObject>
             </div>
           </div>
         </section>
 
-        <section id="about" className="mt-12 grid gap-4 md:grid-cols-3">
+        <section className="mt-5 grid gap-3 md:grid-cols-4">
+          {stats.map((item) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className={`${cardBase} p-4`}
+            >
+              <p className="text-2xl font-semibold md:text-3xl">{item.value}</p>
+              <p className="mt-1 text-xs text-black/55">{item.label}</p>
+            </motion.div>
+          ))}
+        </section>
+
+        <section id="about" className="mt-12 grid gap-4 md:grid-cols-12">
           <div className={`${cardBase} p-5`}>
             <p className="text-xs uppercase tracking-wide text-black/45">
               Current Role
@@ -167,7 +194,7 @@ export function FramerInspiredPortfolio() {
             <p className="mt-3 text-sm text-black/80">{PERSONAL_INFO.currentRole}</p>
             <p className="mt-2 text-sm text-black/65">{PERSONAL_INFO.university}</p>
           </div>
-          <div className={`${cardBase} p-5 md:col-span-2`}>
+          <div className={`${cardBase} p-6 md:col-span-7`}>
             <p className="text-xs uppercase tracking-wide text-black/45">
               About
             </p>
@@ -185,10 +212,30 @@ export function FramerInspiredPortfolio() {
               ))}
             </div>
           </div>
-        </section>
-
-        <section className="mt-4 grid gap-4 md:grid-cols-3">
-          <div className={`${cardBase} p-5`}>
+          <div className={`${cardBase} p-5 md:col-span-4`}>
+            <p className="text-xs uppercase tracking-wide text-black/45">Core Competencies</p>
+            <ul className="mt-3 space-y-2">
+              {CORE_COMPETENCIES.map((item) => (
+                <li key={item} className="text-sm text-black/75">
+                  • {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={`${cardBase} p-5 md:col-span-3`}>
+            <p className="text-xs uppercase tracking-wide text-black/45">
+              Languages
+            </p>
+            <div className="mt-3 space-y-3">
+              {LANGUAGES.map((item) => (
+                <div key={item.name}>
+                  <p className="text-sm font-medium">{item.name}</p>
+                  <p className="text-xs text-black/60">{item.level}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className={`${cardBase} p-5 md:col-span-5`}>
             <p className="text-xs uppercase tracking-wide text-black/45">
               Education
             </p>
@@ -204,30 +251,15 @@ export function FramerInspiredPortfolio() {
               ))}
             </div>
           </div>
-          <div className={`${cardBase} p-5`}>
-            <p className="text-xs uppercase tracking-wide text-black/45">
-              Languages
-            </p>
-            <div className="mt-3 space-y-3">
-              {LANGUAGES.map((item) => (
-                <div key={item.name}>
-                  <p className="text-sm font-medium">{item.name}</p>
-                  <p className="text-xs text-black/60">{item.level}</p>
+          <div className={`${cardBase} p-5 md:col-span-4`}>
+            <p className="text-xs uppercase tracking-wide text-black/45">Featured Stack</p>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              {topSkills.slice(0, 8).map((skill) => (
+                <div key={skill.name} className="rounded-xl border border-black/10 bg-[#f8f4ec] px-3 py-2 text-xs">
+                  {skill.name}
                 </div>
               ))}
             </div>
-          </div>
-          <div className={`${cardBase} p-5`}>
-            <p className="text-xs uppercase tracking-wide text-black/45">
-              Core Competencies
-            </p>
-            <ul className="mt-3 space-y-2">
-              {CORE_COMPETENCIES.map((item) => (
-                <li key={item} className="text-sm text-black/75">
-                  • {item}
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
@@ -243,45 +275,84 @@ export function FramerInspiredPortfolio() {
               GitHub
             </a>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4">
             {featuredProjects.map((project, index) => (
               <motion.article
                 key={project.id}
-                className={`${cardBase} p-5`}
+                className={`${cardBase} overflow-hidden`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: index * 0.06 }}
                 whileHover={{ y: -4 }}
               >
+                <div className="grid gap-0 md:grid-cols-[1.2fr_1fr]">
+                  <div className="p-6 md:p-7">
+                    <p className="text-xs uppercase tracking-wide text-black/50">{project.subtitle}</p>
+                    <h3 className="mt-2 text-2xl font-semibold md:text-3xl">{project.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-black/72 md:text-base">
+                      {project.description}
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {project.tech.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-black/10 bg-[#f8f4ee] px-2.5 py-1 text-[11px]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.metrics.slice(0, 3).map((metric) => (
+                        <span key={metric} className="text-xs text-black/55">
+                          • {metric}
+                        </span>
+                      ))}
+                    </div>
+                    {project.githubUrl ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-5 inline-block text-xs font-medium underline decoration-black/30 underline-offset-4"
+                      >
+                        Open repository
+                      </a>
+                    ) : (
+                      <p className="mt-5 text-xs text-black/45">Private project</p>
+                    )}
+                  </div>
+                  <div className="border-l border-black/8 bg-[#f3ede2] p-6">
+                    <div className="flex h-full min-h-[190px] items-center justify-center rounded-2xl border border-black/10 bg-gradient-to-br from-white to-[#ece3d4] p-4 text-center">
+                      {project.githubUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={toGithubPreviewUrl(project.githubUrl)}
+                          alt={`${project.title} repository preview`}
+                          className="h-full w-full rounded-xl object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="text-sm text-black/55">
+                          <p>Private project</p>
+                          <p className="mt-1 text-xs">No public repository preview</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            {sideProjects.map((project) => (
+              <article key={project.id} className={`${cardBase} p-5`}>
                 <p className="text-xs text-black/50">{project.subtitle}</p>
                 <h3 className="mt-1 text-lg font-semibold">{project.title}</h3>
-                <p className="mt-3 line-clamp-4 text-sm text-black/70">
-                  {project.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tech.slice(0, 3).map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-black/10 bg-[#f8f4ee] px-2.5 py-1 text-[11px]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {project.githubUrl ? (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-4 inline-block text-xs font-medium underline decoration-black/30 underline-offset-4"
-                  >
-                    Open repository
-                  </a>
-                ) : (
-                  <p className="mt-4 text-xs text-black/45">Private project</p>
-                )}
-              </motion.article>
+                <p className="mt-3 text-sm text-black/70">{project.description}</p>
+              </article>
             ))}
           </div>
         </section>
@@ -310,19 +381,26 @@ export function FramerInspiredPortfolio() {
                   </span>
                 </div>
                 <p className="mt-3 text-sm text-black/75">{item.description}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {item.highlights.map((h) => (
+                    <span key={h} className="rounded-full border border-black/10 bg-[#f8f4ee] px-2.5 py-1 text-[11px]">
+                      {h}
+                    </span>
+                  ))}
+                </div>
               </motion.article>
             ))}
           </div>
         </section>
 
-        <section id="contact" className="mt-14">
-          <div className={`${cardBase} p-7 md:p-10`}>
+        <section id="contact" className="mt-14 grid gap-4 md:grid-cols-3">
+          <div className={`${cardBase} p-6 md:col-span-2 md:p-10`}>
             <p className="text-xs uppercase tracking-wide text-black/45">
               Contact
             </p>
             <h2 className="mt-2 max-w-2xl text-3xl font-semibold leading-tight md:text-4xl">
-              Interested in collaborating on AI, product engineering, or
-              creative web experiences?
+              Have an AI or backend-heavy product to build? I can help from idea
+              to shipping.
             </h2>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -331,23 +409,17 @@ export function FramerInspiredPortfolio() {
               >
                 {PERSONAL_INFO.email}
               </a>
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-black/15 bg-white px-5 py-2.5 text-sm font-medium"
-              >
-                LinkedIn
-              </a>
-              <a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-black/15 bg-white px-5 py-2.5 text-sm font-medium"
-              >
-                GitHub
-              </a>
             </div>
+          </div>
+          <div className={`${cardBase} p-5`}>
+            <p className="text-xs uppercase tracking-wide text-black/45">Next Step</p>
+            <p className="mt-2 text-sm text-black/75">
+              Send your project context, timeline, and success criteria. I can
+              respond with a build plan and architecture direction.
+            </p>
+            <a href={`mailto:${PERSONAL_INFO.email}`} className="mt-4 inline-block text-sm font-medium underline decoration-black/35 underline-offset-4">
+              Start a conversation
+            </a>
           </div>
         </section>
       </main>
