@@ -56,6 +56,13 @@ export function FramerInspiredPortfolio() {
     { label: "Production Uptime", value: "99.9%" },
     { label: "ML Classification Accuracy", value: "87%" },
   ];
+  const services = [
+    "LLM Application Engineering",
+    "RAG & Retrieval Pipelines",
+    "Backend API Architecture",
+    "AI Evaluation & QA Automation",
+    "Data Pipeline Engineering",
+  ];
 
   return (
     <div className="min-h-screen bg-[#ece6db] text-[#141414] selection:bg-[#d7cfbf]">
@@ -90,13 +97,15 @@ export function FramerInspiredPortfolio() {
 
       <main id="top" className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-10">
         <section className="relative overflow-hidden rounded-[34px] border border-black/10 bg-[#f8f4ec] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.08)] md:p-10">
+          <div className="pointer-events-none absolute -left-14 top-8 h-40 w-40 rounded-full bg-[#f4d0b7]/55 blur-3xl" />
+          <div className="pointer-events-none absolute -right-8 bottom-6 h-40 w-40 rounded-full bg-[#bfcde7]/50 blur-3xl" />
           <div className="grid gap-8 md:grid-cols-[1.15fr_1fr] md:items-center">
             <div>
               <p className="mb-4 inline-block rounded-full border border-black/10 bg-white px-3 py-1 text-xs tracking-wide">
                 Software Engineer + AI Specialist
               </p>
               <h1 className="max-w-xl text-4xl font-semibold leading-[1.02] md:text-[72px]">
-                AI products with depth, speed, and real production quality.
+                &quot;I build AI systems that solve real business problems&quot;
               </h1>
               <p className="mt-5 max-w-lg text-sm text-black/70 md:text-[17px]">
                 I&apos;m {PERSONAL_INFO.fullName}, currently based in{" "}
@@ -164,6 +173,22 @@ export function FramerInspiredPortfolio() {
                 <p className="mt-2 text-sm font-medium">{PERSONAL_INFO.title}</p>
                 <p className="mt-2 text-xs text-black/60">{PERSONAL_INFO.currentRole}</p>
               </FloatingObject>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-5">
+          <div className={`${cardBase} p-5`}>
+            <p className="mb-3 text-xs uppercase tracking-[0.2em] text-black/45">Services</p>
+            <div className="grid gap-2 md:grid-cols-5">
+              {services.map((service) => (
+                <div
+                  key={service}
+                  className="rounded-2xl border border-black/10 bg-[#f8f4ec] px-3 py-3 text-xs font-medium leading-relaxed"
+                >
+                  {service}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -262,7 +287,7 @@ export function FramerInspiredPortfolio() {
 
         <section id="projects" className="mt-16">
           <div className="mb-5 flex items-center justify-between">
-            <h2 className="text-2xl font-semibold md:text-3xl">Selected Work</h2>
+            <h2 className="text-2xl font-semibold md:text-3xl">Works</h2>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
@@ -344,7 +369,7 @@ export function FramerInspiredPortfolio() {
         </section>
 
         <section id="experience" className="mt-14">
-          <h2 className="mb-5 text-2xl font-semibold md:text-3xl">Experience</h2>
+          <h2 className="mb-5 text-2xl font-semibold md:text-3xl">Experiences</h2>
           <div className="space-y-4">
             {WORK_EXPERIENCE.map((item, index) => (
               <motion.article
