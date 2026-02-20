@@ -1,16 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { PERSONAL_INFO, PROJECTS, WORK_EXPERIENCE } from "@/lib/constants";
 
-function toGithubPreviewUrl(repoUrl: string) {
-  if (!repoUrl || !repoUrl.includes("github.com")) return "";
-  const match = repoUrl.match(/github\.com\/([^/]+)\/([^/?#]+)/);
-  if (!match) return "";
-  const owner = match[1];
-  const repo = match[2].replace(/\.git$/, "");
-  return `https://opengraph.githubassets.com/1/${owner}/${repo}`;
-}
+const WebGLArtifact = dynamic(
+  () => import("@/components/framer/WebGLArtifact").then((mod) => ({ default: mod.WebGLArtifact })),
+  { ssr: false },
+);
 
 const services = [
   "LLM Application Engineering",
@@ -27,15 +24,23 @@ const stats = [
 ];
 
 const cardBase =
-  "rounded-[24px] border border-black/10 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)]";
+  "rounded-[24px] border border-black/10 bg-white shadow-[0_8px_22px_rgba(17,24,39,0.06)]";
 
 export function FramerInspiredPortfolio() {
   const heroPortraitSrc = "/images/rahul-hero.jpg";
   const workItems = PROJECTS.slice(0, 6);
+  const artifactPalettes = [
+    { colorA: "#5b7cff", colorB: "#67d4ff" },
+    { colorA: "#7a5cff", colorB: "#c17dff" },
+    { colorA: "#00a489", colorB: "#76e1b6" },
+    { colorA: "#ff6a5e", colorB: "#ffb17a" },
+    { colorA: "#4c7e62", colorB: "#c9d76f" },
+    { colorA: "#2667ff", colorB: "#7dd3fc" },
+  ];
 
   return (
-    <div className="min-h-screen bg-[#f3f0e9] text-[#161616] selection:bg-[#ddd4c5]">
-      <header className="border-b border-black/10 bg-[#f3f0e9]">
+    <div className="min-h-screen bg-[#f5f6f8] text-[#161616] selection:bg-[#d9ddf3]">
+      <header className="border-b border-black/10 bg-[#f5f6f8]">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 md:px-6">
           <a href="#top" className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -89,6 +94,9 @@ export function FramerInspiredPortfolio() {
                 “I build AI systems that are useful, reliable, and ready for
                 production.”
               </h1>
+              <div className="mt-5 h-24 overflow-hidden rounded-2xl border border-black/10">
+                <WebGLArtifact seed={999} colorA="#2f5ef7" colorB="#8de0ff" />
+              </div>
             </div>
             <div className={`${cardBase} p-6 md:p-8`}>
               <p className="text-sm leading-relaxed text-black/75 md:text-base">
@@ -139,19 +147,16 @@ export function FramerInspiredPortfolio() {
                 transition={{ delay: index * 0.05 }}
               >
                 <div className="overflow-hidden border-b border-black/10 bg-[#efe8db]">
-                  {project.githubUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={toGithubPreviewUrl(project.githubUrl)}
-                      alt={project.title}
-                      className="h-[220px] w-full object-cover"
-                      loading="lazy"
+                  <div className="relative h-[220px]">
+                    <WebGLArtifact
+                      seed={project.id}
+                      colorA={artifactPalettes[index % artifactPalettes.length].colorA}
+                      colorB={artifactPalettes[index % artifactPalettes.length].colorB}
                     />
-                  ) : (
-                    <div className="flex h-[220px] items-center justify-center text-sm text-black/45">
-                      Private project
+                    <div className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-white/35 bg-black/45 px-3 py-1 text-xs text-white backdrop-blur">
+                      {project.subtitle}
                     </div>
-                  )}
+                  </div>
                 </div>
                 <div className="p-5">
                   <h3 className="text-xl font-semibold">{project.title}</h3>
