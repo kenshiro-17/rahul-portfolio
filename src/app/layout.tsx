@@ -40,13 +40,13 @@ const audiowide = Audiowide({
 // Metadata
 export const metadata: Metadata = {
   metadataBase: new URL("https://rahulraj.dev"),
-  title: "Rahul Raj | Software Engineer & AI Specialist",
+  title: "Rahul Raj | AI-Focused Software Engineer",
   description:
-    "Portfolio of Rahul Raj - A Software Engineer & AI Specialist building AI-powered solutions with human-centered design. Expertise in PyTorch, React, Python, and deep learning.",
+    "Portfolio of Rahul Raj - AI-focused software engineer building end-to-end LLM applications, RAG systems, backend services, and reliable test automation workflows.",
   keywords: [
     "Rahul Raj",
     "Software Engineer",
-    "AI Specialist",
+    "AI-Focused Software Engineer",
     "Machine Learning",
     "Deep Learning",
     "PyTorch",
@@ -65,9 +65,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://rahulraj.dev",
     siteName: "Rahul Raj Portfolio",
-    title: "Rahul Raj | Software Engineer & AI Specialist",
+    title: "Rahul Raj | AI-Focused Software Engineer",
     description:
-      "Building AI-powered solutions with human-centered design. Explore my portfolio of AI/ML projects and enterprise applications.",
+      "Building production-grade LLM and RAG systems with strong backend engineering, test automation, and data pipelines.",
     images: [
       {
         url: "/og-image.png",
@@ -79,9 +79,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rahul Raj | Software Engineer & AI Specialist",
+    title: "Rahul Raj | AI-Focused Software Engineer",
     description:
-      "Building AI-powered solutions with human-centered design.",
+      "Building production-grade LLM and RAG systems with strong backend engineering and automation.",
     images: ["/og-image.png"],
   },
   robots: {
