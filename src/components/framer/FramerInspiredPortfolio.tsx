@@ -55,6 +55,7 @@ function toGithubPreviewUrl(repoUrl: string) {
 }
 
 export function FramerInspiredPortfolio() {
+  const heroPortraitSrc = "/images/rahul-hero.jpg";
   const featuredProjects = PROJECTS.slice(0, 5);
   const sideProjects = PROJECTS.slice(5, 8);
   const topSkills = [...SKILLS.primary, ...SKILLS.secondary].slice(0, 10);
@@ -152,11 +153,16 @@ export function FramerInspiredPortfolio() {
                 delay={0.25}
                 className={`absolute right-0 top-24 w-[70%] p-5 ${cardBase}`}
               >
-                <p className="text-xs uppercase tracking-wide text-black/50">Contact Window</p>
-                <a href={`mailto:${PERSONAL_INFO.email}`} className="mt-2 block text-sm font-medium underline decoration-black/30 underline-offset-4">
-                  {PERSONAL_INFO.email}
-                </a>
-                <p className="mt-1 text-xs text-black/55">{PERSONAL_INFO.location}</p>
+                <p className="mb-2 text-xs uppercase tracking-wide text-black/50">Portrait</p>
+                <div className="mx-auto flex h-44 w-44 items-center justify-center rounded-full border border-black/10 bg-[#f4ede2] p-2 shadow-inner">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={heroPortraitSrc}
+                    alt={`${PERSONAL_INFO.fullName} portrait`}
+                    className="h-full w-full rounded-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
               </FloatingObject>
 
               <FloatingObject
