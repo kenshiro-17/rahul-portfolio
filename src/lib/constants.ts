@@ -210,6 +210,14 @@ export const SKILLS = {
     ],
     "Programming": ["Python", "TypeScript", "JavaScript", "SQL"],
     "Frameworks": ["FastAPI", "Node.js", "React", "Next.js"],
+    "Cloud & DevOps": [
+      "Docker",
+      "Linux",
+      "CI/CD",
+      "Azure DevOps (basic)",
+      "Containerization",
+    ],
+    "Web & Desktop": ["React", "Next.js", "Electron", "Qt", "WinUI", "macOS"],
     "DevOps & Cloud": [
       "Docker",
       "Linux",
