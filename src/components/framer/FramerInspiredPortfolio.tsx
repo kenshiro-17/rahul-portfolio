@@ -1,13 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 import { PERSONAL_INFO, PROJECTS, WORK_EXPERIENCE } from "@/lib/constants";
-
-const WebGLArtifact = dynamic(
-  () => import("@/components/framer/WebGLArtifact").then((mod) => ({ default: mod.WebGLArtifact })),
-  { ssr: false },
-);
 
 const services = [
   "LLM Application Engineering",
@@ -26,17 +20,37 @@ const stats = [
 const cardBase =
   "rounded-[24px] border border-black/10 bg-white shadow-[0_8px_22px_rgba(17,24,39,0.06)]";
 
+function ProjectCover({ index }: { index: number }) {
+  const palettes = [
+    ["#131722", "#2f5ef7", "#8de0ff"],
+    ["#1d142a", "#7a5cff", "#d6b0ff"],
+    ["#0f2922", "#0ea888", "#83e6c2"],
+    ["#2b1617", "#ff6a5e", "#ffc3ad"],
+    ["#1e2434", "#4f7cff", "#a9c3ff"],
+    ["#22201a", "#7a6f49", "#e7d7aa"],
+  ] as const;
+
+  const p = palettes[index % palettes.length];
+
+  return (
+    <div
+      className="relative h-[220px] overflow-hidden"
+      style={{
+        background: `radial-gradient(circle at 20% 20%, ${p[2]}55 0%, transparent 35%),
+                     radial-gradient(circle at 80% 75%, ${p[1]}66 0%, transparent 38%),
+                     linear-gradient(135deg, ${p[0]} 0%, ${p[1]} 100%)`,
+      }}
+    >
+      <div className="absolute -right-14 -top-14 h-40 w-40 rounded-full border border-white/20 bg-white/10" />
+      <div className="absolute bottom-5 left-5 h-16 w-16 rounded-2xl border border-white/20 bg-black/25 backdrop-blur-sm" />
+      <div className="absolute right-8 top-10 h-24 w-24 rotate-12 rounded-[28px] border border-white/15 bg-white/10 backdrop-blur-sm" />
+    </div>
+  );
+}
+
 export function FramerInspiredPortfolio() {
   const heroPortraitSrc = "/images/rahul-hero.jpg";
   const workItems = PROJECTS.slice(0, 6);
-  const artifactPalettes = [
-    { colorA: "#5b7cff", colorB: "#67d4ff" },
-    { colorA: "#7a5cff", colorB: "#c17dff" },
-    { colorA: "#00a489", colorB: "#76e1b6" },
-    { colorA: "#ff6a5e", colorB: "#ffb17a" },
-    { colorA: "#4c7e62", colorB: "#c9d76f" },
-    { colorA: "#2667ff", colorB: "#7dd3fc" },
-  ];
 
   return (
     <div className="min-h-screen bg-[#f5f6f8] text-[#161616] selection:bg-[#d9ddf3]">
@@ -94,8 +108,12 @@ export function FramerInspiredPortfolio() {
                 “I build AI systems that are useful, reliable, and ready for
                 production.”
               </h1>
-              <div className="mt-5 h-24 overflow-hidden rounded-2xl border border-black/10">
-                <WebGLArtifact seed={999} colorA="#2f5ef7" colorB="#8de0ff" />
+              <div className="mt-5 h-24 overflow-hidden rounded-2xl border border-black/10 bg-gradient-to-r from-[#d9e5ff] via-[#f0f5ff] to-[#e8f7ff]" />
+              <div className="-mt-16 flex h-24 items-center justify-between px-4 text-xs text-black/50">
+                <span>LLM</span>
+                <span>RAG</span>
+                <span>APIs</span>
+                <span>QA</span>
               </div>
             </div>
             <div className={`${cardBase} p-6 md:p-8`}>
@@ -147,16 +165,7 @@ export function FramerInspiredPortfolio() {
                 transition={{ delay: index * 0.05 }}
               >
                 <div className="overflow-hidden border-b border-black/10 bg-[#efe8db]">
-                  <div className="relative h-[220px]">
-                    <WebGLArtifact
-                      seed={project.id}
-                      colorA={artifactPalettes[index % artifactPalettes.length].colorA}
-                      colorB={artifactPalettes[index % artifactPalettes.length].colorB}
-                    />
-                    <div className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-white/35 bg-black/45 px-3 py-1 text-xs text-white backdrop-blur">
-                      {project.subtitle}
-                    </div>
-                  </div>
+                  <ProjectCover index={index} />
                 </div>
                 <div className="p-5">
                   <h3 className="text-xl font-semibold">{project.title}</h3>
